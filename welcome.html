@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Groomsmen Invitation</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Georgia', serif;
+    }
+
+    body {
+      background: url('img/el.jpg') no-repeat center center/cover;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #f1f1f1;
+    }
+
+    .card {
+      width: 80%;
+      max-width: 500px;
+      background: rgba(44, 62, 80, 0.8); /* Semi-transparent dark background */
+      padding: 20px 30px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      border: 2px solid #ecf0f1;
+      animation: fadeIn 1.5s ease;
+    }
+
+    .title {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #ecf0f1;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      font-style: italic;
+      margin-bottom: 20px;
+      color: #bdc3c7;
+    }
+
+    .content {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #ecf0f1;
+    }
+
+    .highlight {
+      color: #e74c3c;
+      font-weight: bold;
+    }
+
+    .buttons {
+      margin-top: 20px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 10px 5px;
+      font-size: 1rem;
+      color: #ecf0f1;
+      text-decoration: none;
+      border-radius: 8px;
+      border: 2px solid #ecf0f1;
+      transition: all 0.3s;
+    }
+
+    .button.accept {
+      background-color: #27ae60;
+      border-color: #27ae60;
+    }
+
+    .button.decline {
+      background-color: transparent;
+      border-color: #e74c3c;
+      color: #e74c3c;
+    }
+
+    .button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1 class="title">Will You Be My Groomsman?</h1>
+    <p class="subtitle">A special request for a special friend</p>
+    <p class="content">
+      Dear <span class="highlight">[Name]</span>,<br><br>
+      I couldn’t imagine my wedding day without you standing by my side. You’ve been there through the laughs, the challenges, and the unforgettable memories. Now, I’d be honored to have you as one of my groomsmen as I step into this new chapter of my life.<br><br>
+      Let’s suit up and create even more incredible memories together. What do you say?
+    </p>
+    <div class="buttons">
+      <a href="https://chat.whatsapp.com/YourGroupInviteLink" target="_blank" class="button accept">Accept</a>
+      <a href="#" class="button decline">Decline</a>
+    </div>
+  </div>
+</body>
+</html>
