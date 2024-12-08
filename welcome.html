@@ -13,7 +13,7 @@
     }
 
     body {
-      background: url('img/back.jpg') no-repeat center center/cover;
+      background: url('img/10034558.jpg') no-repeat center center/cover;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -60,42 +60,11 @@
       font-weight: bold;
     }
 
-    .buttons {
-      margin-top: 20px;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 10px 20px;
-      margin: 10px 5px;
-      font-size: 1rem;
-      color: #ecf0f1;
-      text-decoration: none;
-      border-radius: 8px;
-      border: 2px solid #ecf0f1;
-      transition: all 0.3s;
-    }
-
-    .button.accept {
-      background-color: #27ae60;
-      border-color: #27ae60;
-    }
-
-    .button.decline {
-      background-color: transparent;
-      border-color: #e74c3c;
-      color: #e74c3c;
-    }
-
-    .button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    }
-
     .suit-options {
       display: flex;
       justify-content: space-between;
       gap: 10px;
+      margin-top: 20px;
     }
 
     .suit-option {
@@ -110,11 +79,42 @@
       margin-bottom: 5px;
     }
 
-    .contribution {
-      text-align: left;
-      margin-top: 20px;
-      color: #ecf0f1;
+    .button {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 10px 5px;
       font-size: 1rem;
+      color: #014253;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .button.accept {
+      background-color: #27ae60;
+      border: 2px solid #27ae60;
+    }
+
+    .button.decline {
+      background-color: transparent;
+      border: 2px solid #e74c3c;
+      color: #e74c3c;
+    }
+
+    .button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .results {
+      margin-top: 20px;
+      text-align: left;
+    }
+
+    .results p {
+      font-size: 1.2rem;
+      margin: 5px 0;
     }
 
     @keyframes fadeIn {
@@ -145,33 +145,93 @@
     </div>
   </div>
 
+  <!-- Contribution Card -->
+  <div class="card">
+    <h2 class="title">Contribution N$2500 </h2>
+    <p class="content">Contribution includes:</p>
+    <ul class="content" style="text-align: left;">
+      <li>Suit</li>
+      <li>Shirt</li>
+      <li>Tie</li>
+      <li>Second Day Shirt</li>
+    </ul>
+    <p class="content">Thank you for being part of this special moment.</p>
+  </div>
+
   <!-- Suit Selection Card -->
   <div class="card">
     <h2 class="title">Suit Selection</h2>
-    <p class="subtitle">Choose one of the two suits below:</p>
+    <p class="subtitle">Vote for your preferred suit:</p>
     <div class="suit-options">
       <div class="suit-option">
-        <img src="img/suit1.jpeg" alt="Suit 1">
+        <img src="img/suit1.jpg" alt="Suit 1">
         <label>
           <input type="radio" name="suit" value="Suit 1"> Suit 1
         </label>
       </div>
       <div class="suit-option">
-        <img src="img/suit2.jpeg" alt="Suit 2">
+        <img src="img/suit2.jpg" alt="Suit 2">
         <label>
           <input type="radio" name="suit" value="Suit 2"> Suit 2
         </label>
       </div>
     </div>
+    <button class="button" id="voteButton">Vote</button>
+    <div class="results" id="results">
+      <p>Suit 1 Votes: <span id="suit1Votes">0</span></p>
+      <p>Suit 2 Votes: <span id="suit2Votes">0</span></p>
+    </div>
   </div>
 
-  <!-- Contribution Card -->
-  <div class="card">
-    <h2 class="title">Contribution</h2>
-    <p class="content">
-      Contribution Amount: <span class="highlight">N$2500</span><br>
-      Includes: Suit, Shirt, Tie, and Second Day Shirt.
-    </p>
-  </div>
+  <script>
+    const voteButton = document.getElementById('voteButton');
+    const results = document.getElementById('results');
+    const suit1VotesElem = document.getElementById('suit1Votes');
+    const suit2VotesElem = document.getElementById('suit2Votes');
+
+    // Initialize votes from local storage
+    let suit1Votes = parseInt(localStorage.getItem('suit1Votes')) || 0;
+    let suit2Votes = parseInt(localStorage.getItem('suit2Votes')) || 0;
+    let hasVoted = localStorage.getItem('hasVoted') || false;
+
+    // Update displayed votes
+    function updateVotes() {
+      suit1VotesElem.textContent = suit1Votes;
+      suit2VotesElem.textContent = suit2Votes;
+    }
+
+    updateVotes();
+
+    // Voting functionality
+    voteButton.addEventListener('click', () => {
+      if (hasVoted) {
+        alert('You have already voted.');
+        return;
+      }
+
+      const selectedSuit = document.querySelector('input[name="suit"]:checked');
+      if (!selectedSuit) {
+        alert('Please select a suit to vote.');
+        return;
+      }
+
+      const vote = selectedSuit.value;
+      if (vote === 'Suit 1') {
+        suit1Votes++;
+      } else if (vote === 'Suit 2') {
+        suit2Votes++;
+      }
+
+      // Save votes to local storage
+      localStorage.setItem('suit1Votes', suit1Votes);
+      localStorage.setItem('suit2Votes', suit2Votes);
+      localStorage.setItem('hasVoted', true);
+      hasVoted = true;
+
+      // Update results display
+      updateVotes();
+      alert('Thank you for your vote!');
+    });
+  </script>
 </body>
 </html>
