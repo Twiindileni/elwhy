@@ -13,11 +13,13 @@
     }
 
     body {
-      background: url('img/el.jpg') no-repeat center center/cover;
-      height: 100vh;
+      background: url('img/back.jpg') no-repeat center center/cover;
+      min-height: 100vh;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
+      gap: 20px;
       color: #f1f1f1;
     }
 
@@ -90,6 +92,31 @@
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     }
 
+    .suit-options {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .suit-option {
+      flex: 1;
+      text-align: center;
+    }
+
+    .suit-option img {
+      width: 100%;
+      max-width: 150px;
+      border-radius: 8px;
+      margin-bottom: 5px;
+    }
+
+    .contribution {
+      text-align: left;
+      margin-top: 20px;
+      color: #ecf0f1;
+      font-size: 1rem;
+    }
+
     @keyframes fadeIn {
       from {
         opacity: 0;
@@ -103,6 +130,7 @@
   </style>
 </head>
 <body>
+  <!-- Invitation Card -->
   <div class="card">
     <h1 class="title">Will You Be My Groomsman?</h1>
     <p class="subtitle">A special request for a special friend</p>
@@ -115,6 +143,35 @@
       <a href="https://chat.whatsapp.com/YourGroupInviteLink" target="_blank" class="button accept">Accept</a>
       <a href="#" class="button decline">Decline</a>
     </div>
+  </div>
+
+  <!-- Suit Selection Card -->
+  <div class="card">
+    <h2 class="title">Suit Selection</h2>
+    <p class="subtitle">Choose one of the two suits below:</p>
+    <div class="suit-options">
+      <div class="suit-option">
+        <img src="img/suit1.jpeg" alt="Suit 1">
+        <label>
+          <input type="radio" name="suit" value="Suit 1"> Suit 1
+        </label>
+      </div>
+      <div class="suit-option">
+        <img src="img/suit2.jpeg" alt="Suit 2">
+        <label>
+          <input type="radio" name="suit" value="Suit 2"> Suit 2
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contribution Card -->
+  <div class="card">
+    <h2 class="title">Contribution</h2>
+    <p class="content">
+      Contribution Amount: <span class="highlight">N$2500</span><br>
+      Includes: Suit, Shirt, Tie, and Second Day Shirt.
+    </p>
   </div>
 </body>
 </html>
