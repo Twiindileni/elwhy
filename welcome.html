@@ -13,7 +13,7 @@
     }
 
     body {
-      background: url('img/el.jpg') no-repeat center center/cover;
+      background: url('img/background.jpg') no-repeat center center/cover;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -26,7 +26,7 @@
     .card {
       width: 80%;
       max-width: 500px;
-      background: rgba(44, 62, 80, 0.8); /* Semi-transparent dark background */
+      background: rgba(34, 31, 22, 0.8); /* Semi-transparent dark background */
       padding: 20px 30px;
       border-radius: 15px;
       text-align: center;
@@ -127,6 +127,30 @@
         transform: translateY(0);
       }
     }
+
+    .invitation-preview {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .invitation-card {
+      width: 80%;
+      max-width: 500px;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 20px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      border: 2px solid #ecf0f1;
+      color: #2c3e50;
+      display: none;
+    }
+
+    .invitation-card.active {
+      display: block;
+    }
   </style>
 </head>
 <body>
@@ -140,7 +164,7 @@
       Let’s suit up and create even more incredible memories together. What do you say?
     </p>
     <div class="buttons">
-      <a href="https://chat.whatsapp.com/YourGroupInviteLink" target="_blank" class="button accept">Accept</a>
+      <a href="https://chat.whatsapp.com/EV6FWlc7HtUJSmlnUlI3Ux" target="_blank" class="button accept">Accept</a>
       <a href="#" class="button decline">Decline</a>
     </div>
   </div>
@@ -164,13 +188,13 @@
     <p class="subtitle">Vote for your preferred suit:</p>
     <div class="suit-options">
       <div class="suit-option">
-        <img src="img/suit1.jpeg" alt="Suit 1">
+        <img src="img/beige 1.png" alt="Suit 1">
         <label>
           <input type="radio" name="suit" value="Suit 1"> Suit 1
         </label>
       </div>
       <div class="suit-option">
-        <img src="img/suit2.jpeg" alt="Suit 2">
+        <img src="img/beige 2.jpg" alt="Suit 2">
         <label>
           <input type="radio" name="suit" value="Suit 2"> Suit 2
         </label>
@@ -183,7 +207,28 @@
     </div>
   </div>
 
+  <!-- Invitation Preview Section -->
+  <div class="invitation-preview">
+    <button id="view-card-button" class="button" onclick="redirectToWeddingCard()">View Card</button>
+    <div class="invitation-card" id="invitationCard">
+      <h2>Wedding Invitation</h2>
+      <p>Join us in celebrating our big day!</p>
+      <p>Date: 03 October 2025</p>
+      <p>Location: Omaumba Uukwaluudhi, Omusati Region</p>
+      <p>Time: 13H00</p>
+    </div>
+  </div>
+
   <script>
+    function toggleInvitationCard() {
+      const invitationCard = document.getElementById('invitationCard');
+      invitationCard.classList.toggle('active');
+    }
+
+    function redirectToWeddingCard() {
+      window.location.href = 'card.html';
+    }
+
     const voteButton = document.getElementById('voteButton');
     const results = document.getElementById('results');
     const suit1VotesElem = document.getElementById('suit1Votes');
